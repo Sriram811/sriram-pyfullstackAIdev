@@ -43,6 +43,15 @@ Put `profile.png`, `resume.pdf` and the sports images in `universe/public/assets
 - Reduced motion: no parallax or RGB animation, camera follows scroll without damping.
 - No WebGL, or a scene error: the Universe opens full screen on its own.
 
+## Deploying to Vercel (assets, resume, Universe)
+- Vercel settings: build command `npm run build`, output directory `dist` (also in `vercel.json`).
+- Your real files live in `public/assets/{profile,sports,resume}/` and MUST be committed (`public/assets` is no longer git-ignored).
+  Paths come from `universe/src/data/portfolioData.js` (`assets`); the resume file is `public/assets/resume/SRIRAM_T.pdf` (no spaces).
+- `npm run build` builds the Universe into `public/universe`, builds the workstation, then runs `scripts/verify-dist.mjs`,
+  which FAILS the build if the Universe, its bundles or any referenced image/PDF is missing from `dist/`.
+- `npm test` also checks that every asset path exists with exact filename/case and is not git-ignored.
+- After deploying, open `/universe/index.html`, `/assets/profile/profile.png` and `/assets/resume/SRIRAM_T.pdf` on your domain.
+
 ## What is on the monitors
 - **Left (career):** Bluestock Fintech is the only INTERNSHIP. QSpiders, Edu Tantr, Emglitz and CodeBind are labelled TRAINING.
 - **Centre:** the untouched Universe (iframe), with a faint screen-glass reflection that fades as you enter.

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import gsap from 'gsap'
 import { TOUCH_RANGE, WHEEL_RANGE, createDirector } from './lib/director'
 import UniverseFrame from './UniverseFrame'
+import { assets } from '../universe/src/data/portfolioData.js'
 
 const Workstation = lazy(() => import('./Workstation'))
 const SRC = `${import.meta.env.BASE_URL}universe/index.html`
@@ -36,6 +37,7 @@ export default function App() {
     const wheel = (e) => {
       if (d.inside) return
       e.preventDefault()
+      d.lastOuterWheel = performance.now()
       const px = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY
       d.nudge(Math.max(-120, Math.min(120, px)) / WHEEL_RANGE)
     }
@@ -93,7 +95,7 @@ export default function App() {
           <span className="text-sm font-semibold tracking-wide text-white">Sriram T</span>
         </div>
         <nav className="pointer-events-auto absolute right-5 top-4 flex gap-2 text-xs sm:right-8 sm:top-6">
-          <a href="/assets/resume.pdf" target="_blank" rel="noreferrer" className="rounded-full border border-white/15 px-4 py-2 text-white/80 backdrop-blur transition hover:border-cyan-300/60 hover:text-white">Resume</a>
+          <a href={assets.resume} download="Sriram_T_Resume.pdf" className="rounded-full border border-white/15 px-4 py-2 text-white/80 backdrop-blur transition hover:border-cyan-300/60 hover:text-white">Resume</a>
           <button onClick={contact} className="rounded-full border border-white/15 px-4 py-2 text-white/80 backdrop-blur transition hover:border-cyan-300/60 hover:text-white">Contact</button>
         </nav>
         <div className="scrim absolute inset-x-0 bottom-0 h-72" />

@@ -16,12 +16,16 @@ const UniverseFrame = forwardRef(function UniverseFrame({ director, src, inside,
   const attach = (ev) => {
     off.current?.()
     const win = ev.currentTarget.contentWindow
-    if (!win) return
-    let lastWheel = 0, gestureAtTop = false, lastY = 0, touchAtTop = false, pulling = false
+    if (!win || win.location.href === 'about:blank') return // the empty placeholder fires load before src is set
+    let lastWheel = 0, swallow = false, gestureAtTop = false, lastY = 0, touchAtTop = false, pulling = false
     const onWheel = (e) => {
-      const now = performance.now()
-      if (now - lastWheel > GESTURE_GAP) gestureAtTop = win.scrollY <= 0
+      const now = performance.now(), gap = now - lastWheel
       lastWheel = now
+      // Momentum tail of the scroll that entered: keep the Universe at its top. Bounded to 1.2 s after entry,
+      // so it can never trap normal scrolling.
+      if (swallow && director.inside && gap < 350 && now - director.enteredAt < 1200) { e.preventDefault(); return }
+      if (gap > GESTURE_GAP || swallow) { gestureAtTop = win.scrollY <= 0; swallow = director.inside && now - (director.lastOuterWheel || 0) < 350 && now - director.enteredAt < 1200 }
+      if (swallow) { e.preventDefault(); return }
       if (!director.inside || !gestureAtTop || e.deltaY >= 0) return
       e.preventDefault()
       director.retreat(Math.min(-wheelPx(e), 120), WHEEL_RANGE)

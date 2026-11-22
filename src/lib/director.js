@@ -29,7 +29,7 @@ export function framing(aspect, fov) {
 export function createDirector({ gsap, reduced = false } = {}) {
   const cam = { px: 0, py: 0, pz: 0, tx: 0, ty: 0, tz: 0, fov: 38 }
   const d = { target: 0, p: 0, inside: false, reduced, cam, tl: null, onInside: null }
-  const setInside = (v) => { if (d.inside !== v) { d.inside = v; d.onInside?.(v) } }
+  const setInside = (v) => { if (d.inside !== v) { d.inside = v; if (v) d.enteredAt = performance.now(); d.onInside?.(v) } }
   const stop = () => gsap.killTweensOf(d)
 
   // Outside the monitor: scroll/swipe/keys move the target. Inside: ignored (the Universe owns scrolling).

@@ -4,10 +4,10 @@
 // - Anything not in either source stays empty. No repository/demo URL, status or statistic is invented.
 export const career = [
   { org: 'QSpiders', place: 'Velachery, Chennai', role: 'Python Full Stack Development Incubation', kind: 'training', period: 'May 2026 – October 2026', tech: ['Python', 'Django', 'Oracle SQL', 'HTML', 'CSS', 'JavaScript'] },
-  { org: 'Edu Tantr', place: 'Bengaluru', role: 'Web Development', kind: 'training', period: 'August 2025 – October 2025', tech: ['React.js', 'JavaScript', 'CSS', 'HTML'] },
-  { org: 'Bluestock Fintech', place: 'Remote', role: 'Software Development Engineer Intern', kind: 'internship', period: 'July 2025 – August 2025', tech: [], focus: 'Attendance Voting System' },
-  { org: 'Emglitz', place: 'Salem', role: 'Python with Machine Learning', kind: 'training', period: 'December 2024 – January 2025', tech: ['Python', 'OOP', 'Machine Learning'] },
-  { org: 'CodeBind', place: 'T Nagar, Chennai', role: 'Frontend Development', kind: 'training', period: 'July 2023', tech: ['Node.js', 'MongoDB'] }
+  { org: 'Edu Tantr', place: 'Bengaluru', role: 'Web Development', kind: 'training', period: '90 Days', tech: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'] },
+  { org: 'Bluestock Fintech', place: 'Remote', role: 'Software Development Engineer Intern', kind: 'internship', period: 'July 2026 – August 2026', tech: [] },
+  { org: 'Emglitz', place: 'Salem', role: 'Python with Machine Learning', kind: 'training', period: '30 Days', tech: ['Python', 'OOP', 'Machine Learning'] },
+  { org: 'CodeBind', place: 'T Nagar, Chennai', role: 'Frontend Development', kind: 'training', period: '15 Days', tech: ['HTML5', 'CSS3'] }
 ]
 
 export const projects = [

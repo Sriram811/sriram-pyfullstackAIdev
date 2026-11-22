@@ -3,13 +3,15 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "engines": { "node": ">=18" },
   "scripts": {
     "universe:build": "node scripts/build-universe.mjs",
     "predev": "node scripts/build-universe.mjs --if-missing",
     "dev": "vite",
-    "build": "node scripts/build-universe.mjs && vite build",
+    "build": "node scripts/build-universe.mjs && vite build && node scripts/verify-dist.mjs",
     "preview": "vite preview",
-    "test": "node --test tests/logic.test.mjs tests/data.test.mjs"
+    "verify": "node scripts/verify-dist.mjs",
+    "test": "node --test tests/logic.test.mjs tests/data.test.mjs tests/assets.test.mjs"
   },
   "dependencies": {
     "@react-three/drei": "9.114.0",
