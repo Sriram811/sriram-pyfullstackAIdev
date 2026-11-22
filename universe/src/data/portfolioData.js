@@ -26,7 +26,7 @@ export const profile = {
 
   linkedin: "https://www.linkedin.com/in/sriramtamilmani2004",
 
-  github: "https://github.com/sriram0811",
+  github: "https://github.com/sriram811",
 
   identity: "Full Stack Developer | Python Developer | AI Enthusiast",
 
