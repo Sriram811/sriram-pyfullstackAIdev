@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body, #root { height: 100%; margin: 0; background: #07070b; overflow: hidden; overscroll-behavior: none; }
+body { font-family: 'Sora', system-ui, sans-serif; color: #d7dbe8; -webkit-font-smoothing: antialiased; }
+:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; border-radius: 6px; }
+/* --p (0..1) is the scroll-timeline progress, written every frame by the camera rig. */
+.fade-with-p { opacity: clamp(0, calc(1 - var(--p, 0) * 2.6), 1); }
+@keyframes cue { 0% { transform: translateY(0); opacity: 1 } 70% { transform: translateY(12px); opacity: 0 } 100% { opacity: 0 } }
+.cue-dot { animation: cue 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .cue-dot { animation: none; } }
+
+.screen-reflect { background: linear-gradient(115deg, rgba(255,255,255,.13) 0%, transparent 30%, transparent 66%, rgba(140,180,255,.08) 100%); opacity: clamp(0, calc(1 - var(--p, 0) * 4), 1); }
+.scrim { background: radial-gradient(ellipse at 0% 100%, rgba(5,5,9,.82), transparent 70%); }
